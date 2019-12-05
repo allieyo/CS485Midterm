@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 using TMPro;
 
 public class DialogueManager : MonoBehaviour
@@ -15,7 +16,7 @@ public class DialogueManager : MonoBehaviour
     void Start()
     {
         sentences = new Queue<string>();
-        
+        dialogueText.text = "Click anywhere to start";
         
     }
 
@@ -23,7 +24,7 @@ public class DialogueManager : MonoBehaviour
     {
 
         Debug.Log("Starting conversation with " + dialogue.name);
-
+        
         sentences.Clear();
 
         foreach(string sentence in dialogue.sentences)
@@ -53,6 +54,7 @@ public class DialogueManager : MonoBehaviour
     void EndDialogue()
     {
         Debug.Log("End of convo");
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
 
         GameObject obj = GameObject.Find("Dialogue");
         obj.SetActive(false);

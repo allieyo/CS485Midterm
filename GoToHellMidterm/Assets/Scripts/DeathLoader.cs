@@ -7,6 +7,6 @@ public class DeathLoader : MonoBehaviour {
 
     private void OnTriggerEnter2D (Collider2D other)
     {
-        SceneManager.LoadScene(4);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }
